@@ -1,6 +1,6 @@
 {
     "name": "ThebingServices/codemirror",
-    "description": "This ist a fork of CodeMirror. In-browser code editing.",
+    "description": "This ist a fork of CodeMirror. In-browser code editor.",
     "keywords": ["codemirror", "js editor", "html editor", "editor", "code editor"],
     "license": "MIT",
     "target-dir": "CodeMirror"
