@@ -6,7 +6,7 @@
 	"authors": [
         {
             "name": "Marijn Haverbeke - marijnh",
-            "homepage": "http://codemirror.net/",
+            "homepage": "http://codemirror.net/"
         }
     ],
     "target-dir": "CodeMirror"
