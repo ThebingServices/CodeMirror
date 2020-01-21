@@ -11,6 +11,8 @@ function indexOf(collection, elt) {
 }
 
 function test(name, run, expectedFail) {
+  if (!/^vim/.test(name)) return
+  console.log(name)
   // Force unique names
   var originalName = name;
   var i = 2; // Second function would be NAME_2
@@ -106,12 +108,16 @@ function near(a, b, margin, msg) {
   if (Math.abs(a - b) > margin)
     throw new Failure(label(a + " is not close to " + b + " (" + margin + ")", msg));
 }
-function eqPos(a, b, msg) {
-  function str(p) { return "{line:" + p.line + ",ch:" + p.ch + "}"; }
+function eqCharPos(a, b, msg) {
+  function str(p) { return "{line:" + p.line + ",ch:" + p.ch + ",sticky:" + p.sticky + "}"; }
   if (a == b) return;
   if (a == null) throw new Failure(label("comparing null to " + str(b), msg));
   if (b == null) throw new Failure(label("comparing " + str(a) + " to null", msg));
   if (a.line != b.line || a.ch != b.ch) throw new Failure(label(str(a) + " != " + str(b), msg));
+}
+function eqCursorPos(a, b, msg) {
+  eqCharPos(a, b, msg);
+  if (a) eq(a.sticky, b.sticky, msg ? msg + ' (sticky)' : 'sticky');
 }
 function is(a, msg) {
   if (!a) throw new Failure(label("assertion failed", msg));
